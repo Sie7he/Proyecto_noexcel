@@ -1,0 +1,80 @@
+{% extends "./base.html" %}
+
+{% block title %} Gestión de Clientes {% endblock %}
+
+{% block body %}
+
+<div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+        {% if messages %}
+        {% for message in messages %}
+
+        <div class="alert alert-dismissible alert-success">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <strong class="text-dark">{{ message }}</strong>
+
+        </div>
+
+        {% endfor %}
+        {% endif %}
+        <h1>Gestion Clientes</h1>
+        <div class="card">
+            <div class="card-body">
+                <form action="/registrarCliente/" method="POST">{% csrf_token %}
+
+                    <div class="mb-3">
+                        <input type="text" id="txtRun" name="txtRun" class="form-control" placeholder="Run"  oninput="checkRut(this)" required/>
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" id="txtNombre" name="txtNombre" class="form-control" placeholder="Nombre" required/>
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" id="txtAPaterno" name="txtAPaterno" class="form-control" placeholder="Apellido Paterno" required/>
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" id="txtAM" name="txtAM" class="form-control" placeholder="Apellido Materno" required/>
+                    </div>
+                    <div class="mb-3">
+                        <input type="date" id="txtDate" name="txtDate" class="form-control" required/>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-success">Guardar</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
+        <h1>Listado de Clientes</h1>
+        <div class="table-responsive">
+            <table class="table table-stripped">
+                <thead>
+                    <tr>
+                        <th>Run</th>
+                        <th>Nombre</th>
+                        <th>Apellido Paterno</th>
+                        <th>Apellido Materno</th>
+                        <th>Fecha de Nacimiento</th>
+                        <th colspan="2">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for c in clientes %}
+                    <tr>
+                        <td>{{c.run}}</td>
+                        <td>{{c.nombre}}</td>
+                        <td>{{c.apellido_paterno}}</td>
+                        <td>{{c.apellido_materno}}</td>
+                        <td>{{c.fecha_nacimiento}}</td>
+                        <td><a href="editarCliente/{{c.run}}" class="btn btn-info">Editar</a></td>
+                        <td><a href="eliminarCliente/{{c.run}}" class="btn btn-danger btnEliminar">Borrar</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

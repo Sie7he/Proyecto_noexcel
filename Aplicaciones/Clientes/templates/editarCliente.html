@@ -1,0 +1,37 @@
+{% extends "./base.html" %}
+
+{% block title %} Gestión de Clientes {% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <h1>Actualizar Clientes</h1>
+        <div class="card">
+            <div class="card-body">
+                <form action="/editarCliente/" method="POST">{% csrf_token %}
+
+                    <div class="mb-3">
+                        <input type="text" id="txtRun" name="txtRun" class="form-control" value="{{cliente.run}}" readonly  required/>
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" id="txtNombre" name="txtNombre" class="form-control" value="{{cliente.nombre}}" placeholder="Nombre" required/>
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" id="txtAPaterno" name="txtAPaterno" class="form-control" value="{{cliente.apellido_paterno}}" placeholder="Apellido Paterno" required/>
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" id="txtAM" name="txtAM" class="form-control" value="{{cliente.apellido_materno}}" placeholder="Apellido Materno" required/>
+                    </div>
+                    <div class="mb-3">
+                        <input type="date" id="txtDate" name="txtDate" class="form-control" value="{{cliente.fecha_nacimiento|date:'Y-m-d'}}" />
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-success">Guardar</button>
+                    </div>
+
+                </form>
+            </div>
+    </div>
+</div>
+
+{% endblock %}
