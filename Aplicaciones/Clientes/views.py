@@ -51,3 +51,6 @@ def editarCliente(request):
     cliente.fecha_nacimiento = fecha_nacimiento
     cliente.save()
     return redirect('/')
+
+def buscaminas(request):
+    return render(request, "buscaminas.html")
