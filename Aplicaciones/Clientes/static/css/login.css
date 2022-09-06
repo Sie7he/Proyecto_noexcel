@@ -1,5 +1,7 @@
 
-
+body{
+    overflow: hidden;
+}
 section{
     display: flex ;
     justify-content: center;
@@ -63,7 +65,6 @@ section{
     border-bottom: 1px solid rgba(255,255,255,0.2);
     font-size: 16px;
     letter-spacing: 1px;
-
     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
 
 }
@@ -79,7 +80,7 @@ section{
     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
     width: 100%;
     border-radius: 35px;
-    background: #fff;
+    background: #aaf5e2;
     color: #667;
     max-width: 100px;
     cursor: pointer;

@@ -11,6 +11,16 @@
     })
 })();
 
+(function (){
+    const spinnerBox = document.getElementById('spinner-box');
+    const gestion = document.getElementById('gestion');
+    setTimeout(()=>{
+        spinnerBox.classList.add('not-visible')
+        gestion.classList.remove('not-visible')
+        
+    },500)
+})();
+
 
 function checkRut(rut) {
     // Despejar Puntos
@@ -74,3 +84,5 @@ $('.txtInput').on('keypress', function (event) {
        return false;
     }
 });
+
+
