@@ -62,3 +62,6 @@ def login(request):
 def salir(request):
     logout(request)
     return redirect('/')
+
+def calculadora(request):
+    return render(request, "calculadora.html")

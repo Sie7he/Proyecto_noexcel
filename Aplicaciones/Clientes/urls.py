@@ -9,5 +9,6 @@ urlpatterns = [
     path('eliminarCliente/<run>', views.eliminarCliente),
     path('buscaminas', views.buscaminas),
     path('registration/login', views.login),
-    path('salir/', views.salir)
+    path('salir/', views.salir),
+    path('calculadora/', views.calculadora)
 ]
