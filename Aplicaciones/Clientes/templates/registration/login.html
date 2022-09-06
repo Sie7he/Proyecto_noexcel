@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../static/css/login.css">
+    <title>Document</title>
+</head>
+<body>
+
+    <div>
+        <section>
+
+        <div class="box">
+
+            <div class="contenedor-login">
+               <form method="post" class="form">{% csrf_token %}
+              
+                <h2>Inicia Sesión</h2>
+                    
+                        <div class="inputBox">
+                            <input 
+                                type="text"
+                                name="username" 
+                                placeholder="Ingresa tu usuario" 
+                               
+                            />
+                        </div>
+                        <div class="inputBox">
+                            <input 
+                                type="password" 
+                                name="password"
+                                placeholder="Ingresa tu contraseña" 
+                               
+                            />
+                        </div>
+                        <div class="inputBox">
+                            <button
+                                onClick={login}
+                                class='btn-login'
+                            > 
+                                Login
+                            </button>
+                        </div>
+               </form>
+                    
+                        
+                    
+                
+            </div>
+        </div>
+    </section>
+    </div>
+
+</body>
+</html>

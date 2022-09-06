@@ -7,5 +7,7 @@ urlpatterns = [
     path('editarCliente/<run>', views.edicionCliente),
     path('editarCliente/', views.editarCliente),
     path('eliminarCliente/<run>', views.eliminarCliente),
-    path('buscaminas', views.buscaminas)
+    path('buscaminas', views.buscaminas),
+    path('registration/login', views.login),
+    path('salir/', views.salir)
 ]

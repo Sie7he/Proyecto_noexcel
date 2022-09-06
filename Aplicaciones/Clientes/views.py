@@ -4,10 +4,11 @@ from django.shortcuts import render, redirect
 from .models import Clientes
 from django.contrib import messages
 from django.db import IntegrityError
-
-
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
 # Create your views here.
 
+@login_required
 def home(request):
     clientes = Clientes.objects.all()
     return render(request, "gestionClientes.html", {"clientes": clientes})
@@ -54,3 +55,10 @@ def editarCliente(request):
 
 def buscaminas(request):
     return render(request, "buscaminas.html")
+
+def login(request):
+    return render(request, "registration/login.html")
+
+def salir(request):
+    logout(request)
+    return redirect('/')
