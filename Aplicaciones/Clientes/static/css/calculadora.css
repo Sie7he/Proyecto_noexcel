@@ -1,14 +1,6 @@
-* {
-    font-family: 'Fraunces', serif;
-    color: #fff;
-}
 
-body {
-    margin: 0;
-    background-color: #224870;
-}
 
-.container {
+.container-cal {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -23,6 +15,7 @@ body {
     padding: 15px;
     border-radius: 32px;
     box-shadow: 15px 10px 0px 5px #00000033;
+    color: aliceblue;
 }
 
 button {
@@ -44,7 +37,7 @@ button:focus {
     outline: none;
 }
 
-.col-2 {
+.col-2-cal {
     grid-column: span 2;
 }
 

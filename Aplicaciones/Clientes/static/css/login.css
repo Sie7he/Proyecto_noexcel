@@ -1,7 +1,5 @@
 
-body{
-    overflow: hidden;
-}
+
 section{
     display: flex ;
     justify-content: center;
