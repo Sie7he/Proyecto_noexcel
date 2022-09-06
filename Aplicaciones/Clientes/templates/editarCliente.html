@@ -11,16 +11,16 @@
                 <form action="/editarCliente/" method="POST">{% csrf_token %}
 
                     <div class="mb-3">
-                        <input type="text" id="txtRun" name="txtRun" class="form-control" value="{{cliente.run}}" readonly  required/>
+                        <input type="text" id="txtRun" name="txtRun" class="form-control txtInput" value="{{cliente.run}}" readonly  required/>
                     </div>
                     <div class="mb-3">
-                        <input type="text" id="txtNombre" name="txtNombre" class="form-control" value="{{cliente.nombre}}" placeholder="Nombre" required/>
+                        <input type="text" id="txtNombre" name="txtNombre" class="form-control txtInput" value="{{cliente.nombre}}" placeholder="Nombre" required/>
                     </div>
                     <div class="mb-3">
-                        <input type="text" id="txtAPaterno" name="txtAPaterno" class="form-control" value="{{cliente.apellido_paterno}}" placeholder="Apellido Paterno" required/>
+                        <input type="text" id="txtAPaterno" name="txtAPaterno" class="form-control txtInput" value="{{cliente.apellido_paterno}}" placeholder="Apellido Paterno" required/>
                     </div>
                     <div class="mb-3">
-                        <input type="text" id="txtAM" name="txtAM" class="form-control" value="{{cliente.apellido_materno}}" placeholder="Apellido Materno" required/>
+                        <input type="text" id="txtAM" name="txtAM" class="form-control txtInput" value="{{cliente.apellido_materno}}" placeholder="Apellido Materno" required/>
                     </div>
                     <div class="mb-3">
                         <input type="date" id="txtDate" name="txtDate" class="form-control" value="{{cliente.fecha_nacimiento|date:'Y-m-d'}}" />

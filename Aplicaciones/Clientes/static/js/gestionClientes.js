@@ -66,3 +66,11 @@ function checkRut(rut) {
     // Si todo sale bien, eliminar errores (decretar que es válido)
     rut.setCustomValidity('');
 }
+$('.txtInput').on('keypress', function (event) {
+    var regex = new RegExp("^[a-zA-Z ]+$");
+    var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+    if (!regex.test(key)) {
+       event.preventDefault();
+       return false;
+    }
+});
