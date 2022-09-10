@@ -11,5 +11,6 @@ urlpatterns = [
     path('registration/login', views.login),
     path('salir/', views.salir),
     path('calculadora/', views.calculadora),
-    path('json', views.json)
+    path('json/<tp>', views.json),
+    path('cuestionario/', views.preguntas)
 ]

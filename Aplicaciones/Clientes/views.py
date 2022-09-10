@@ -70,6 +70,10 @@ def salir(request):
 def calculadora(request):
     return render(request, "calculadora.html")
 
-def json(request):
-    data = list(PreguntasCalidad.objects.values())
+def json(request,tp):
+    tipo = PreguntasCalidad.objects.filter(tipo_calidad=tp)
+    data = list(tipo.values())
     return JsonResponse(data,safe = False)
+
+def preguntas(request):
+    return render(request, "cuestionario.html")

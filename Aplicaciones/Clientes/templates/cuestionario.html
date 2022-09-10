@@ -1,0 +1,35 @@
+{% extends "./base.html" %}
+
+{% block title %} Gestión de Clientes {% endblock %}
+
+{% block body %}
+<div class="container">
+     
+    <div class="botones_nav m-4">
+        <button class="btn btn-light btn-lg" onclick="listPreguntas(1)"> Accesibilidad </button>
+        <button class="btn btn-light btn-lg" onclick="listPreguntas(2)"> Usabilidad </button>
+        <button class="btn btn-light btn-lg" onclick="listPreguntas(3)"> Rapidez de Acceso</button> 
+        <button class="btn btn-light btn-lg" onclick="listPreguntas(4)"> Seguridad </button>
+    </div>
+    
+
+    <div class="row shadow-lg p-3 mb-5">
+        <div class="col">
+            <table id="tablaArticulos" class="table table-striped table-bordered" style="width:100%">
+            <thead>
+                <tr>
+                
+                    <th>Nombre</th>      
+                    <th>Ticket</th>                               
+                    
+         
+                </tr>
+            </thead>
+            <tbody class="tbPreguntas">
+        
+            </tbody>
+            </table> 
+        </div>
+    </div>
+</div>
+{% endblock %}
