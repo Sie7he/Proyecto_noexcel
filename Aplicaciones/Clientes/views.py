@@ -6,6 +6,10 @@ from django.contrib import messages
 from django.db import IntegrityError
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
+from django.http import JsonResponse
+import json
+from .models import PreguntasCalidad
+
 # Create your views here.
 
 @login_required
@@ -65,3 +69,7 @@ def salir(request):
 
 def calculadora(request):
     return render(request, "calculadora.html")
+
+def json(request):
+    data = list(PreguntasCalidad.objects.values())
+    return JsonResponse(data,safe = False)

@@ -10,5 +10,6 @@ urlpatterns = [
     path('buscaminas', views.buscaminas),
     path('registration/login', views.login),
     path('salir/', views.salir),
-    path('calculadora/', views.calculadora)
+    path('calculadora/', views.calculadora),
+    path('json', views.json)
 ]
