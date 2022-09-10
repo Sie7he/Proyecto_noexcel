@@ -13,14 +13,14 @@ const listPreguntas = (tp) =>{
                     $('#tablaArticulos').append(
                         $('<tr>'),
                         $('<td>').text(item.nombre),
-                        $('<td> <input type="checkbox" checked />')
+                        $('<td> <input type="checkbox" checked name="check'+i+'" onclick="return false" />')
                     );
                 }
                 else {
                     $('#tablaArticulos').append(
                         $('<tr>'),
                         $('<td>').text(item.nombre),
-                        $('<td> <input type="checkbox" />')
+                        $('<td> <input type="checkbox" name="check'+i+'" onclick="return false" />')
                     )
                 }
              
