@@ -77,3 +77,6 @@ def json(request,tp):
 
 def preguntas(request):
     return render(request, "cuestionario.html")
+
+def dashboard(request):
+    return render(request, "dashboard.html")

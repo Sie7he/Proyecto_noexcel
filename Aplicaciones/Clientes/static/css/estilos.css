@@ -2,3 +2,12 @@
     display: flex;
     justify-content: space-between;
 }
+
+#canvas-holder {
+    background-color: #FFFFFF;
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+}

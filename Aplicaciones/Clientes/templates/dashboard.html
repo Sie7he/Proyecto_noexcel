@@ -1,0 +1,139 @@
+{% extends "./base.html" %}
+
+{% block title %} Gestión de Clientes {% endblock %}
+
+{% block body %}
+
+
+<div class="row">
+    
+    <div class="col-md-3">
+        <canvas id="myChart" width="50" height="50"></canvas>
+    </div>
+    <div class="col-md-3">
+    <canvas id="myChart1" width="50" height="50"></canvas>
+    </div>
+    <div class="col-md-3">
+        <canvas id="myChart2" width="50" height="50"></canvas>
+    </div>
+    <div class="col-md-3">
+        <canvas id="myChart3" width="50" height="50"></canvas>
+    </div>
+
+     
+
+    </div>
+</div>
+<script>
+  
+
+const ctx = document.getElementById('myChart');
+const ctx1 = document.getElementById('myChart1');
+const ctx2 = document.getElementById('myChart2');
+const ctx3 = document.getElementById('myChart3');
+
+const myChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: ['Completado', 'No Completado'],
+        datasets: [{
+            label: '# of Votes',
+            data: [7, 30],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: true,
+        
+    }
+});
+
+
+const myChart1 = new Chart(ctx1, {
+    type: 'pie',
+    data: {
+        labels: ['Completado', 'No Completado'],
+        datasets: [{
+            label: '# of Votes',
+            data: [10, 3],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: true,
+        
+    }
+});
+
+const myChart2 = new Chart(ctx2, {
+    type: 'pie',
+    data: {
+        labels: ['Completado', 'No Completado'],
+        datasets: [{
+            label: '# of Votes',
+            data: [14, 5],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: true,
+        
+    }
+});
+
+const myChart3 = new Chart(ctx3, {
+    type: 'pie',
+    data: {
+        labels: ['Completado', 'No Completado'],
+        datasets: [{
+            label: '# of Votes',
+            data: [7, 14],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: true,
+        
+    }
+});
+
+
+</script>
+
+{% endblock %}
