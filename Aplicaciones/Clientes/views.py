@@ -1,3 +1,4 @@
+from pickle import FALSE
 from sqlite3 import IntegrityError
 from warnings import catch_warnings
 from django.shortcuts import render, redirect
@@ -76,6 +77,9 @@ def json(request,tp):
     return JsonResponse(data,safe = False)
 
 def preguntas(request):
+    return render(request, "cuestionario.html")
+
+def tickets(request):
     ticket_true = PreguntasCalidad.objects.filter(ticket=1).count()
     ticket_false = PreguntasCalidad.objects.filter(ticket=0).count()
 
@@ -91,8 +95,7 @@ def preguntas(request):
     ticket_true_rda = PreguntasCalidad.objects.filter(ticket=1, tipo_calidad=4).count()
     ticket_false_rda = PreguntasCalidad.objects.filter(ticket=0, tipo_calidad=4).count()
 
-    return render(request, "cuestionario.html", (
-        {'ticket_true': ticket_true, 
+    data =  [{'ticket_true': ticket_true, 
         'ticket_false': ticket_false,
         'ticket_true_acce': ticket_true_acce,
         'ticket_false_acce': ticket_false_acce,
@@ -103,7 +106,8 @@ def preguntas(request):
         'ticket_true_rda': ticket_true_rda,
         'ticket_false_rda': ticket_false_rda
 
-        }))
+        }]
+    return JsonResponse(data, safe=False)
 
 def dashboard(request):
     return render(request, "dashboard.html")
