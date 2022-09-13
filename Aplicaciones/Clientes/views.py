@@ -76,7 +76,34 @@ def json(request,tp):
     return JsonResponse(data,safe = False)
 
 def preguntas(request):
-    return render(request, "cuestionario.html")
+    ticket_true = PreguntasCalidad.objects.filter(ticket=1).count()
+    ticket_false = PreguntasCalidad.objects.filter(ticket=0).count()
+
+    ticket_true_acce = PreguntasCalidad.objects.filter(ticket=1, tipo_calidad=1).count()
+    ticket_false_acce = PreguntasCalidad.objects.filter(ticket=0, tipo_calidad=1).count()
+
+    ticket_true_usa = PreguntasCalidad.objects.filter(ticket=1, tipo_calidad=2).count()
+    ticket_false_usa = PreguntasCalidad.objects.filter(ticket=0, tipo_calidad=2).count()
+
+    ticket_true_seg = PreguntasCalidad.objects.filter(ticket=1, tipo_calidad=3).count()
+    ticket_false_seg = PreguntasCalidad.objects.filter(ticket=0, tipo_calidad=3).count()
+
+    ticket_true_rda = PreguntasCalidad.objects.filter(ticket=1, tipo_calidad=4).count()
+    ticket_false_rda = PreguntasCalidad.objects.filter(ticket=0, tipo_calidad=4).count()
+
+    return render(request, "cuestionario.html", (
+        {'ticket_true': ticket_true, 
+        'ticket_false': ticket_false,
+        'ticket_true_acce': ticket_true_acce,
+        'ticket_false_acce': ticket_false_acce,
+        'ticket_true_usa': ticket_true_usa,
+        'ticket_false_usa': ticket_false_usa,
+        'ticket_true_seg': ticket_true_seg,
+        'ticket_false_seg': ticket_false_seg,
+        'ticket_true_rda': ticket_true_rda,
+        'ticket_false_rda': ticket_false_rda
+
+        }))
 
 def dashboard(request):
     return render(request, "dashboard.html")
