@@ -24,6 +24,7 @@ def registrarClientes(request):
     apellido_materno = request.POST['txtAM']
     fecha_nacimiento = request.POST['txtDate']
 
+
     try:
         cliente = Clientes.objects.create(run=run, nombre=nombre,apellido_paterno=apellido_paterno, apellido_materno=apellido_materno, fecha_nacimiento=fecha_nacimiento)
         messages.success(request, 'Cliente guardado correctamente')
@@ -48,7 +49,6 @@ def editarCliente(request):
     apellido_paterno = request.POST['txtAPaterno']
     apellido_materno = request.POST['txtAM']
     fecha_nacimiento = request.POST['txtDate']
-
     cliente = Clientes.objects.get(run=run)
     cliente.nombre = nombre
     cliente.apellido_paterno = apellido_paterno
