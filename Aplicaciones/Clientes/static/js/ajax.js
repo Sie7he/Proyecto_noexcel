@@ -36,12 +36,59 @@ $(document).ready(function ($){
 })
 
 
+
+
 const graficos = () => {
     const ctx = document.getElementById('myChart');
     const ctx1 = document.getElementById('myChart1');
     const ctx2 = document.getElementById('myChart2');
     const ctx3 = document.getElementById('myChart3');
     const ctx4 = document.getElementById('myChart4');
+    const ctx5 = document.getElementById('myChartB').getContext('2d');
+
+
+
+    $.ajax({
+        type:'GET',
+        url: 'http://127.0.0.1:8000/sexo/',
+        contentType: 'application/json',
+        async: true,
+        success: function(data) {
+            $.each(data,function (i,item){
+                const myChart = new Chart(ctx5, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Hombre', 'Mujer','Prefiere no decir'],
+                        datasets: [{
+                            label: 'Personas',
+                            data: [item.masculino, item.femenino, item.otro],
+                            backgroundColor: [
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(153, 102, 255, 0.2)',
+                                'rgba(255, 159, 64, 0.2)'
+                               
+                            ],
+                            borderColor: [
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(153, 102, 255, 0.2)',
+                                'rgba(255, 159, 64, 0.2)'
+                              
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+                
+            })
+        }
+    })
 
     
 
@@ -182,3 +229,6 @@ const graficos = () => {
     })
 
 }
+
+
+

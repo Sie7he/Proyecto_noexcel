@@ -18,16 +18,19 @@ def home(request):
     clientes = Clientes.objects.all()
     return render(request, "gestionClientes.html", {"clientes": clientes})
 
+@login_required
 def registrarClientes(request):
     run = request.POST['txtRun']
     nombre = request.POST['txtNombre']
     apellido_paterno = request.POST['txtAPaterno']
     apellido_materno = request.POST['txtAM']
     fecha_nacimiento = request.POST['txtDate']
+    sexo = request.POST['sexo']
+
 
 
     try:
-        cliente = Clientes.objects.create(run=run, nombre=nombre,apellido_paterno=apellido_paterno, apellido_materno=apellido_materno, fecha_nacimiento=fecha_nacimiento)
+        cliente = Clientes.objects.create(run=run, nombre=nombre,apellido_paterno=apellido_paterno, apellido_materno=apellido_materno, fecha_nacimiento=fecha_nacimiento, sexo=sexo)
         messages.success(request, 'Cliente guardado correctamente')
         return redirect('/')
     except IntegrityError as e:
@@ -35,21 +38,25 @@ def registrarClientes(request):
             messages.error(request,'Error')
         return redirect('/')
 
+@login_required
 def eliminarCliente(request, run):
     cliente = Clientes.objects.get(run=run)
     cliente.delete()
     return redirect('/')
 
+@login_required
 def edicionCliente(request, run):
     cliente = Clientes.objects.get(run=run)
     return render(request, "editarCliente.html", {"cliente": cliente})
 
+@login_required
 def editarCliente(request):
     run = request.POST['txtRun']
     nombre = request.POST['txtNombre']
     apellido_paterno = request.POST['txtAPaterno']
     apellido_materno = request.POST['txtAM']
     fecha_nacimiento = request.POST['txtDate']
+
     cliente = Clientes.objects.get(run=run)
     cliente.nombre = nombre
     cliente.apellido_paterno = apellido_paterno
@@ -58,27 +65,34 @@ def editarCliente(request):
     cliente.save()
     return redirect('/')
 
+@login_required
 def buscaminas(request):
     return render(request, "buscaminas.html")
 
+@login_required
 def login(request):
     return render(request, "registration/login.html")
 
+@login_required
 def salir(request):
     logout(request)
     return redirect('/')
 
+@login_required
 def calculadora(request):
     return render(request, "calculadora.html")
 
+@login_required
 def json(request,tp):
     tipo = PreguntasCalidad.objects.filter(tipo_calidad=tp)
     data = list(tipo.values())
     return JsonResponse(data,safe = False)
 
+@login_required
 def preguntas(request):
     return render(request, "cuestionario.html")
 
+@login_required
 def tickets(request):
     ticket_true = PreguntasCalidad.objects.filter(ticket=1).count()
     ticket_false = PreguntasCalidad.objects.filter(ticket=0).count()
@@ -109,5 +123,20 @@ def tickets(request):
         }]
     return JsonResponse(data, safe=False)
 
+@login_required
 def dashboard(request):
     return render(request, "dashboard.html")
+
+def sexo(request):
+    masculino = Clientes.objects.filter(sexo='Masculino').count()
+    femenino = Clientes.objects.filter(sexo='Femenino').count()
+    Otro = Clientes.objects.filter(sexo='Prefiere no decir').count()
+
+    data = [{
+        'masculino': masculino,
+        'femenino' : femenino,
+        'otro' : Otro
+    }]
+
+    return JsonResponse(data, safe=False)
+

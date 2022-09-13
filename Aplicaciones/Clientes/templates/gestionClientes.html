@@ -42,6 +42,13 @@
                     <div class="mb-3">
                         <input type="date" id="txtDate" name="txtDate" class="form-control" required/>
                     </div>
+                    <div class="mb-3">
+                        <select name="sexo" class="form-control">
+                            <option value="Masculino">Masculino</option>
+                            <option value="Femenino">Femenino</option>
+                            <option value="Prefiere no decir">Prefiere no decir</option>
+                        </select>
+                    </div>
                     <div class="d-grid gap-2">
                         <button type="submit" class="btn btn-success">Guardar</button>
                     </div>
@@ -62,6 +69,7 @@
                         <th>Apellido Paterno</th>
                         <th>Apellido Materno</th>
                         <th>Fecha de Nacimiento</th>
+                        <th>Sexo</th>
                         <th colspan="2">Acciones</th>
                     </tr>
                 </thead>
@@ -73,6 +81,7 @@
                         <td>{{c.apellido_paterno}}</td>
                         <td>{{c.apellido_materno}}</td>
                         <td>{{c.fecha_nacimiento}}</td>
+                        <td>{{c.sexo}}</td>
       
                   
                         <td><a href="editarCliente/{{c.run}}" class="btn btn-info">Editar</a></td>

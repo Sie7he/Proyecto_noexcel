@@ -14,5 +14,7 @@ urlpatterns = [
     path('json/<tp>', views.json),
     path('cuestionario/', views.preguntas),
     path('dashboard/', views.dashboard),
-    path('tickets/', views.tickets)
+    path('tickets/', views.tickets),
+    path('sexo/', views.sexo)
+
 ]
