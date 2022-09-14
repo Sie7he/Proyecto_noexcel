@@ -12,6 +12,7 @@ import json
 from .models import PreguntasCalidad
 
 # Create your views here.
+# Para las vistas del sitio
 
 
 #Vista de inicio, iniciar sesion es requerido para visualizar las vistas
@@ -52,6 +53,7 @@ def edicionCliente(request, run):
     return render(request, "editarCliente.html", {"cliente": cliente})
 
 @login_required
+# Trae los datos para editar cclientes
 def editarCliente(request):
     run = request.POST['txtRun']
     nombre = request.POST['txtNombre']
@@ -70,6 +72,7 @@ def editarCliente(request):
     return redirect('/')
 
 @login_required
+# Buscaminas
 def buscaminas(request):
     return render(request, "buscaminas.html")
 
@@ -98,6 +101,7 @@ def json(request,tp):
 def preguntas(request):
     return render(request, "cuestionario.html")
 
+#data para mostrar en los graficos
 @login_required
 def tickets(request):
     ticket_true = PreguntasCalidad.objects.filter(ticket=1).count()
@@ -114,7 +118,7 @@ def tickets(request):
 
     ticket_true_rda = PreguntasCalidad.objects.filter(ticket=1, tipo_calidad=4).count()
     ticket_false_rda = PreguntasCalidad.objects.filter(ticket=0, tipo_calidad=4).count()
-
+    
     data =  [{'ticket_true': ticket_true, 
         'ticket_false': ticket_false,
         'ticket_true_acce': ticket_true_acce,
@@ -134,6 +138,7 @@ def dashboard(request):
     return render(request, "dashboard.html")
 
 @login_required
+# Para mostrarlo como grafico
 def sexo(request):
     masculino = Clientes.objects.filter(sexo='Masculino').count()
     femenino = Clientes.objects.filter(sexo='Femenino').count()
