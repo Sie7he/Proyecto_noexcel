@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
 
+#Urls del sitio
 urlpatterns = [
     path('', views.home),
     path('registrarCliente/', views.registrarClientes),

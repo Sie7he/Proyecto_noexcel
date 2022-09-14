@@ -1,5 +1,5 @@
 
-
+// Peticion ajax para cargar cuestionario, por parametro se pasa el id del tipo calidad y carga las pregunta segun tipo calidad
 const listPreguntas = (tp) =>{
     $.ajax({
         type:'GET',
@@ -30,13 +30,11 @@ const listPreguntas = (tp) =>{
     })
 }
 
-$(document).ready(function ($){
-    listPreguntas();
-    graficos();
-})
 
 
 
+
+//Peticion ajax para cargar los gráficos de Chartjs.org segun los distintos datos de la BD
 
 const graficos = () => {
     const ctx = document.getElementById('myChart');
@@ -232,3 +230,8 @@ const graficos = () => {
 
 
 
+//Se cargan las funciones al inicio
+$(document).ready(function ($){
+    listPreguntas();
+    graficos();
+})

@@ -13,11 +13,14 @@ from .models import PreguntasCalidad
 
 # Create your views here.
 
+
+#Vista de inicio, iniciar sesion es requerido para visualizar las vistas
 @login_required
 def home(request):
     clientes = Clientes.objects.all()
     return render(request, "gestionClientes.html", {"clientes": clientes})
 
+#Registrar cliente recibe un post del formulario en gestionClientes.html para guardar los datos de cada cliente en la base de datos
 @login_required
 def registrarClientes(request):
     run = request.POST['txtRun']
@@ -26,8 +29,6 @@ def registrarClientes(request):
     apellido_materno = request.POST['txtAM']
     fecha_nacimiento = request.POST['txtDate']
     sexo = request.POST['sexo']
-
-
 
     try:
         cliente = Clientes.objects.create(run=run, nombre=nombre,apellido_paterno=apellido_paterno, apellido_materno=apellido_materno, fecha_nacimiento=fecha_nacimiento, sexo=sexo)
@@ -38,6 +39,7 @@ def registrarClientes(request):
             messages.error(request,'Error')
         return redirect('/')
 
+#Se elimina un cliente en la base de datos
 @login_required
 def eliminarCliente(request, run):
     cliente = Clientes.objects.get(run=run)
@@ -56,12 +58,14 @@ def editarCliente(request):
     apellido_paterno = request.POST['txtAPaterno']
     apellido_materno = request.POST['txtAM']
     fecha_nacimiento = request.POST['txtDate']
+    sexo = request.POST['sexo']
 
     cliente = Clientes.objects.get(run=run)
     cliente.nombre = nombre
     cliente.apellido_paterno = apellido_paterno
     cliente.apellido_materno = apellido_materno
     cliente.fecha_nacimiento = fecha_nacimiento
+    cliente.sexo = sexo
     cliente.save()
     return redirect('/')
 
@@ -82,6 +86,8 @@ def salir(request):
 def calculadora(request):
     return render(request, "calculadora.html")
 
+
+#Peticion que obtiene las preguntas del cuestionario filtrada por tipo calidad
 @login_required
 def json(request,tp):
     tipo = PreguntasCalidad.objects.filter(tipo_calidad=tp)
@@ -127,6 +133,7 @@ def tickets(request):
 def dashboard(request):
     return render(request, "dashboard.html")
 
+@login_required
 def sexo(request):
     masculino = Clientes.objects.filter(sexo='Masculino').count()
     femenino = Clientes.objects.filter(sexo='Femenino').count()

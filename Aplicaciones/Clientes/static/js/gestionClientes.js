@@ -1,3 +1,5 @@
+
+//Alerta para evitar eliminar un cliente por error
 (function () {
     const btnEliminar = document.querySelectorAll(".btnEliminar");
 
@@ -11,6 +13,7 @@
     })
 })();
 
+//prototipo de spinner
 (function (){
     const spinnerBox = document.getElementById('spinner-box');
     const gestion = document.getElementById('gestion');
@@ -76,6 +79,8 @@ function checkRut(rut) {
     // Si todo sale bien, eliminar errores (decretar que es válido)
     rut.setCustomValidity('');
 }
+
+// Expresion regular para solo dejar letras y espacio en inputs
 $('.txtInput').on('keypress', function (event) {
     var regex = new RegExp("^[a-zA-Z ]+$");
     var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);

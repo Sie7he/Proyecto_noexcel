@@ -1,3 +1,5 @@
+
+//Clase Display con su constructor y respectivas funciones
 class Display {
     constructor(displayValorAnterior, displayValorActual) {
         this.displayValorActual = displayValorActual;
@@ -14,10 +16,12 @@ class Display {
         }
     }
 
+
     borrar() {
         this.valorActual = this.valorActual.toString().slice(0,-1);
         this.imprimirValores();
     }
+
 
     borrarTodo() {
         this.valorActual = '';
